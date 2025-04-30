@@ -5,26 +5,79 @@
   <title>熊猫局部改色</title>
   <style>
     body {
-  text-align: center;
-  font-family: sans-serif;
-  background-image: url('./background.jpg'); /* 替换为你的图片地址 */
-  background-size: cover;           /* 自动缩放填满页面 */
-  background-position: center;      /* 居中显示图片 */
-  background-repeat: no-repeat;     /* 不重复平铺 */
-  margin: 0;
-  padding: 0;
-  height: 100vh;                    /* 确保至少填满整个视口 */
-}
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      font-family: "Helvetica Neue", sans-serif;
+      background-image: url('./background.jpg'); /* 替换为你的图片地址 */
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      margin: 0;
+      padding: 0;
+      height: 100vh;
+    }
 
+    .container {
+      display: flex;
+      justify-content: space-between;
+      width: 85%;
+    }
+
+    .kite-column {
+      display: flex;
+      flex-direction: column;
+      width: 30%;
+      margin-right: 20px;
+    }
+
+    .kite-info,
+    .kite-culture {
+      padding: 20px;
+      background-color: rgba(0, 0, 0, 0); /* 半透明白背景便于阅读 */
+      border-radius: 12px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+      font-size: 18px;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .kite-info:hover,
+    .kite-culture:hover {
+      transform: scale(1.03);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
+    }
+
+    .content {
+      flex: 1;
+      text-align: center;
+      color: #fff;
+    }
+
+    .content h2 {
+      font-size: 26px;
+      margin-bottom: 20px;
+      text-shadow: 1px 1px 4px #000;
+    }
 
     svg {
       width: 300px;
       height: 300px;
       cursor: pointer;
-      margin-top: 20px;
-      background-color: rgba(255, 255, 255, 0.7); /* 让SVG在背景上更清晰 */
+      margin-top: 10px;
+      background-color: rgba(44, 255, 0, 0);
       border-radius: 12px;
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+      display: block;
+      margin-left: auto;
+      margin-right: auto;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    svg:hover {
+      transform: scale(1.05);
+      box-shadow: 0 6px 20px rgba(0, 0, 0, 0);
     }
 
     #colorPicker {
@@ -34,26 +87,44 @@
 </head>
 <body>
 
-<h2>点击熊猫局部进行改色</h2>
+<div class="container">
+  <!-- 左侧风筝信息 -->
+  <div class="kite-column">
+    <div class="kite-info">
+      <h3>风筝的介绍</h3>
+      <p>风筝的历史可追溯至中国春秋战国时期（约公元前5世纪），相传由墨子或鲁班以木头或竹子制成“木鸢”，后因造纸术普及演变为“纸鸢”。早期主要用于军事，如汉代韩信测距、南北朝传递求救信号，唐代后逐渐成为民间娱乐活动。约13世纪，风筝经丝绸之路传入阿拉伯及欧洲，进而影响全球。</p>
+    </div>
 
-<svg id="panda" viewBox="0 0 200 200">
-  <!-- 身体 -->
-  <ellipse id="body" cx="100" cy="140" rx="60" ry="40" fill="#fff" stroke="#000" stroke-width="2"/>
-  <!-- 脸 -->
-  <circle id="face" cx="100" cy="80" r="50" fill="#fff" stroke="#000" stroke-width="2"/>
-  <!-- 左耳 -->
-  <circle id="leftEar" cx="60" cy="30" r="15" fill="#000"/>
-  <!-- 右耳 -->
-  <circle id="rightEar" cx="140" cy="30" r="15" fill="#000"/>
-  <!-- 左眼圈 -->
-  <ellipse id="leftEye" cx="75" cy="80" rx="10" ry="15" fill="#000"/>
-  <!-- 右眼圈 -->
-  <ellipse id="rightEye" cx="125" cy="80" rx="10" ry="15" fill="#000"/>
-  <!-- 鼻子 -->
-  <circle id="nose" cx="100" cy="95" r="5" fill="#000"/>
-</svg>
+    <div class="kite-culture">
+      <h3>有关于风筝的民俗文化</h3>
+      <p>在中国，放风筝不仅是一种传统游戏，更承载着人们对健康、好运、和平的祝愿。清明节放风筝是常见习俗，人们相信放飞风筝能带走病痛和厄运。风筝图案也富有寓意，如蝴蝶象征爱情、龙象征权威，燕子代表好运和春天的到来。</p>
+    </div>
+  </div>
 
-<input type="color" id="colorPicker" />
+  <!-- 右侧熊猫改色 -->
+  <div class="content">
+    <h2>点击风筝局部进行改色</h2>
+
+    <svg id="panda" viewBox="0 0 200 200">
+      <!-- 身体 -->
+      <ellipse id="body" cx="100" cy="140" rx="60" ry="40" fill="#fff" stroke="#000" stroke-width="2"/>
+      <!-- 脸 -->
+      <circle id="face" cx="100" cy="80" r="50" fill="#fff" stroke="#000" stroke-width="2"/>
+      <!-- 左耳 -->
+      <circle id="leftEar" cx="60" cy="30" r="15" fill="#000"/>
+      <!-- 右耳 -->
+      <circle id="rightEar" cx="140" cy="30" r="15" fill="#000"/>
+      <!-- 左眼圈 -->
+      <ellipse id="leftEye" cx="75" cy="80" rx="10" ry="15" fill="#000"/>
+      <!-- 右眼圈 -->
+      <ellipse id="rightEye" cx="125" cy="80" rx="10" ry="15" fill="#000"/>
+      <!-- 鼻子 -->
+      <circle id="nose" cx="100" cy="95" r="5" fill="#000"/>
+    </svg>
+
+    <input type="color" id="colorPicker" />
+  </div>
+</div>
 
 <script>
   const colorPicker = document.getElementById("colorPicker");
@@ -72,6 +143,7 @@
   colorPicker.addEventListener("input", () => {
     if (selectedPart) {
       selectedPart.setAttribute("fill", colorPicker.value);
+      colorPicker.style.display = "none"; // 选色完成后隐藏取色器
     }
   });
 
@@ -80,6 +152,9 @@
     return `#${result.join("")}`;
   }
 </script>
+
+<!-- 在 body 内任意位置加入（建议放在末尾） -->
+<audio id="bgm" src="./music.mp3" autoplay loop hidden></audio>
 
 </body>
 </html>
