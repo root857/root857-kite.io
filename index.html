@@ -1,0 +1,385 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>鸢色工坊</title>
+  <link rel="stylesheet" href="assets/styles.css" />
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      font-family: Arial, sans-serif;
+      background-image: url('./assets/3.jpg');
+      background-size: cover;
+      background-position: center;
+      background-repeat: no-repeat;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      position: relative;
+    }
+  
+    /* 校徽和校训样式 - 响应式 */
+    .school-badge {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      display: flex;
+      align-items: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      padding: 10px;
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+      z-index: 10;
+    }
+    
+    .badge-image {
+      width: 50px;
+      height: 50px;
+      margin-right: 10px;
+    }
+    
+    .school-motto {
+      font-size: 14px;
+      font-weight: bold;
+      color: #f8f7f7;
+      font-style: italic;
+      text-shadow: 1px 1px 2px rgba(255, 255, 255, 0.5);
+    }
+
+    /* 学校名称样式 - 响应式 */
+    .school-name {
+      position: fixed;
+      bottom: 10px;
+      right: 10px;
+      font-size: 16px;
+      font-weight: bold;
+      color: #f8f7f7;
+      text-shadow: 1px 1px 3px rgba(0, 0, 0, 0.8);
+      background-color: rgba(0, 0, 0, 0.3);
+      padding: 8px 12px;
+      border-radius: 6px;
+      z-index: 10;
+    }
+  
+    .container {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      width: 95%;
+      margin: 15px auto;
+      padding: 10px;
+      background-color: rgba(0, 0, 0, 0);
+      border-radius: 8px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0);
+      margin-top: 80px;
+      margin-bottom: 60px;
+    }
+  
+    .kite-column {
+      flex: 1 1 100%;
+      margin: 5px;
+      padding: 15px;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      box-shadow: 0 2px 6px rgba(0, 0, 0, 0.2);
+      color: #fff;
+      order: 2;
+    }
+  
+    .content {
+      flex: 1 1 100%;
+      margin: 5px;
+      padding: 15px;
+      text-align: center;
+      background-color: rgba(0, 0, 0, 0.5);
+      border-radius: 8px;
+      color: #fff;
+      order: 1;
+    }
+  
+    h2 {
+      color: #fff;
+      font-size: 18px;
+      margin: 10px 0;
+    }
+  
+    .kite-info h3,
+    .kite-culture h3 {
+      color: #fff;
+      margin-bottom: 8px;
+      font-size: 18px;
+    }
+  
+    .kite-info p,
+    .kite-culture p {
+      color: #fff;
+      line-height: 1.5;
+      font-size: 14px;
+      margin: 8px 0;
+    }
+  
+    svg {
+      width: 100%;
+      max-width: 300px;
+      height: auto;
+      margin: 10px auto;
+      cursor: pointer;
+    }
+  
+    input[type="color"] {
+      margin-top: 15px;
+      width: 60px;
+      height: 30px;
+    }
+    
+    /* 音乐播放器样式 - 响应式 */
+    .music-player {
+      position: fixed;
+      bottom: 60px;
+      left: 10px;
+      background-color: rgba(255, 255, 255, 0.7);
+      padding: 8px 10px;
+      border-radius: 15px;
+      display: flex;
+      align-items: center;
+      z-index: 10;
+      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+      max-width: 180px;
+    }
+    
+    .music-control {
+      background: none;
+      border: none;
+      cursor: pointer;
+      font-size: 16px;
+      margin-right: 5px;
+      color: #333;
+      padding: 0;
+      min-width: 20px;
+    }
+    
+    .music-title {
+      font-size: 12px;
+      color: #333;
+      margin-right: 5px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    
+    .volume-control {
+      width: 60px;
+    }
+    
+    /* 媒体查询 - 平板及以上设备 */
+    @media (min-width: 768px) {
+      .school-badge {
+        top: 20px;
+        left: 20px;
+        padding: 15px;
+      }
+      
+      .badge-image {
+        width: 80px;
+        height: 80px;
+        margin-right: 20px;
+      }
+      
+      .school-motto {
+        font-size: 22px;
+      }
+      
+      .school-name {
+        bottom: 20px;
+        right: 20px;
+        font-size: 24px;
+        padding: 10px 20px;
+      }
+      
+      .container {
+        width: 90%;
+        max-width: 1200px;
+        margin-top: 120px;
+        margin-bottom: 80px;
+      }
+      
+      .kite-column {
+        flex: 1 1 600px;
+        padding: 20px;
+      }
+      
+      .content {
+        flex: 1 1 300px;
+        padding: 20px;
+      }
+      
+      h2 {
+        font-size: 24px;
+      }
+      
+      .kite-info h3,
+      .kite-culture h3 {
+        font-size: 25px;
+      }
+      
+      .kite-info p,
+      .kite-culture p {
+        font-size: 20px;
+      }
+      
+      .music-player {
+        bottom: 80px;
+        left: 20px;
+        padding: 10px 15px;
+        max-width: 250px;
+      }
+      
+      .music-control {
+        font-size: 20px;
+      }
+      
+      .music-title {
+        font-size: 14px;
+      }
+      
+      .volume-control {
+        width: 80px;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<!-- 校徽和校训 -->
+<div class="school-badge">
+  <img src="assets/school-badge.png" alt="校徽" class="badge-image" />
+  <div class="school-motto">融以图新 和而不同</div>
+</div>
+
+<!-- 学校名称 - 右下角 -->
+<div class="school-name">望湖路小学长白分校</div>
+
+<!-- 音乐播放器 - 左下角 -->
+<div class="music-player">
+  <button class="music-control" id="playPauseBtn">▶</button>
+  <span class="music-title">背景音乐</span>
+  <input type="range" class="volume-control" id="volumeControl" min="0" max="1" step="0.1" value="0.5">
+</div>
+
+<div class="container">
+  <!-- 左侧SVG风筝图案 -->
+  <div class="content">
+    <h2>点击风筝进行改色</h2>
+
+    <!-- SVG 风筝图案 -->
+    <svg id="panda" viewBox="0 0 200 250">
+      <!-- 身体 -->
+      <ellipse id="body" cx="100" cy="160" rx="60" ry="40" fill="#fff" stroke="#000" stroke-width="2"/>
+      <ellipse id="leftBackLeg" cx="70" cy="190" rx="12" ry="20" fill="#000"/>
+      <ellipse id="rightBackLeg" cx="130" cy="190" rx="12" ry="20" fill="#000"/>
+      <ellipse id="leftFrontLeg" cx="60" cy="150" rx="10" ry="18" fill="#000"/>
+      <ellipse id="rightFrontLeg" cx="140" cy="150" rx="10" ry="18" fill="#000"/>
+      
+      <!-- 脸 -->
+      <circle id="face" cx="100" cy="80" r="50" fill="#fff" stroke="#000" stroke-width="2"/>
+      <circle id="leftEar" cx="60" cy="30" r="15" fill="#000"/>
+      <circle id="rightEar" cx="140" cy="30" r="15" fill="#000"/>
+      <ellipse id="leftEye" cx="75" cy="80" rx="10" ry="15" fill="#000"/>
+      <ellipse id="rightEye" cx="125" cy="80" rx="10" ry="15" fill="#000"/>
+      <circle cx="75" cy="80" r="4" fill="#fff"/>
+      <circle cx="125" cy="80" r="4" fill="#fff"/>
+      <path id="nose" d="M95 95 Q100 100 105 95" fill="#000"/>
+      <path d="M90 105 Q100 115 110 105" stroke="#000" stroke-width="2" fill="none"/>
+      <circle cx="60" cy="95" r="5" fill="pink" opacity="0.5"/>
+      <circle cx="140" cy="95" r="5" fill="pink" opacity="0.5"/>
+    </svg>
+    
+    <input type="color" id="colorPicker" />
+  </div>
+
+  <!-- 右侧风筝介绍内容 -->
+  <div class="kite-column">
+    <div class="kite-info">
+      <h3>风筝的介绍</h3>
+      <p>风筝的历史可追溯至中国春秋战国时期（约公元前5世纪），相传由墨子或鲁班以木头或竹子制成"木鸢"，后因造纸术普及演变为"纸鸢"。早期主要用于军事，如汉代韩信测距、南北朝传递求救信号，唐代后逐渐成为民间娱乐活动。约13世纪，风筝经丝绸之路传入阿拉伯及欧洲，进而影响全球。</p>
+    </div>
+    <div class="kite-culture">
+      <h3>有关于风筝的民俗文化</h3>
+      <p>在中国，放风筝不仅是一种传统游戏，更承载着人们对健康、好运、和平的祝愿。清明节放风筝是常见习俗，人们相信放飞风筝能带走病痛和厄运。风筝图案也富有寓意，如蝴蝶象征爱情、龙象征权威，燕子代表好运和春天的到来。</p>
+    </div>
+  </div>
+</div>
+<audio id="bgMusic" loop>
+  <source src="assets/824251189.mp3" type="audio/mpeg">
+  您的浏览器不支持音频元素。
+</audio>
+<script>
+  const colorPicker = document.getElementById("colorPicker");
+  let selectedPart = null;
+
+  document.querySelectorAll("svg [id]").forEach(part => {
+    part.addEventListener("click", () => {
+      selectedPart = part;
+      const currentColor = window.getComputedStyle(part).fill;
+      colorPicker.value = rgbToHex(currentColor);
+      colorPicker.style.display = "inline-block";
+      colorPicker.click();
+    });
+  });
+
+  colorPicker.addEventListener("input", () => {
+    if (selectedPart) {
+      selectedPart.setAttribute("fill", colorPicker.value);
+      colorPicker.style.display = "none";
+    }
+  });
+
+  function rgbToHex(rgb) {
+    const result = rgb.match(/\d+/g).map(x => (+x).toString(16).padStart(2, "0"));
+    return `#${result.join("")}`;
+  }
+  
+  // 音乐控制脚本
+  const bgMusic = document.getElementById('bgMusic');
+  const playPauseBtn = document.getElementById('playPauseBtn');
+  const volumeControl = document.getElementById('volumeControl');
+  
+  // 播放/暂停控制
+  playPauseBtn.addEventListener('click', () => {
+    if (bgMusic.paused) {
+      bgMusic.play().then(() => {
+        playPauseBtn.textContent = '❚❚';
+      }).catch(e => {
+        console.log('播放失败:', e);
+      });
+    } else {
+      bgMusic.pause();
+      playPauseBtn.textContent = '▶';
+    }
+  });
+  
+  // 音量控制
+  volumeControl.addEventListener('input', () => {
+    bgMusic.volume = volumeControl.value;
+  });
+  
+  // 页面加载后尝试自动播放音乐（需要用户交互）
+  document.addEventListener('DOMContentLoaded', function() {
+    bgMusic.volume = 0.5;
+    // 现代浏览器要求用户交互后才能播放音频
+    document.body.addEventListener('click', function initMusic() {
+      bgMusic.play().then(() => {
+        playPauseBtn.textContent = '❚❚';
+      }).catch(e => {
+        console.log('自动播放被阻止:', e);
+      });
+      document.body.removeEventListener('click', initMusic);
+    }, { once: true });
+  });
+</script>
+
+</body>
+</html>
