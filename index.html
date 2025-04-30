@@ -4,21 +4,6 @@
   <meta charset="UTF-8" />
   <title>熊猫局部改色</title>
   <style>
-    body { text-align: center; font-family: sans-serif; }
-    svg { width: 300px; height: 300px; cursor: pointer; margin-top: 20px; }
-    #colorPicker { display: none; }
-  </style>
-</head>
-<body>
-
-<h2>点击熊猫局部进行改色</h2>
-
-<svg id="panda" viewBox="0 0 200 200"><!DOCTYPE html>
-<html lang="zh">
-<head>
-  <meta charset="UTF-8" />
-  <title>熊猫局部改色</title>
-  <style>
     body {
   text-align: center;
   font-family: sans-serif;
@@ -52,53 +37,6 @@
 <h2>点击熊猫局部进行改色</h2>
 
 <svg id="panda" viewBox="0 0 200 200">
-  <!-- 身体 -->
-  <ellipse id="body" cx="100" cy="140" rx="60" ry="40" fill="#fff" stroke="#000" stroke-width="2"/>
-  <!-- 脸 -->
-  <circle id="face" cx="100" cy="80" r="50" fill="#fff" stroke="#000" stroke-width="2"/>
-  <!-- 左耳 -->
-  <circle id="leftEar" cx="60" cy="30" r="15" fill="#000"/>
-  <!-- 右耳 -->
-  <circle id="rightEar" cx="140" cy="30" r="15" fill="#000"/>
-  <!-- 左眼圈 -->
-  <ellipse id="leftEye" cx="75" cy="80" rx="10" ry="15" fill="#000"/>
-  <!-- 右眼圈 -->
-  <ellipse id="rightEye" cx="125" cy="80" rx="10" ry="15" fill="#000"/>
-  <!-- 鼻子 -->
-  <circle id="nose" cx="100" cy="95" r="5" fill="#000"/>
-</svg>
-
-<input type="color" id="colorPicker" />
-
-<script>
-  const colorPicker = document.getElementById("colorPicker");
-  let selectedPart = null;
-
-  document.querySelectorAll("svg [id]").forEach(part => {
-    part.addEventListener("click", () => {
-      selectedPart = part;
-      const currentColor = window.getComputedStyle(part).fill;
-      colorPicker.value = rgbToHex(currentColor);
-      colorPicker.style.display = "inline-block";
-      colorPicker.click();
-    });
-  });
-
-  colorPicker.addEventListener("input", () => {
-    if (selectedPart) {
-      selectedPart.setAttribute("fill", colorPicker.value);
-    }
-  });
-
-  function rgbToHex(rgb) {
-    const result = rgb.match(/\d+/g).map(x => (+x).toString(16).padStart(2, "0"));
-    return `#${result.join("")}`;
-  }
-</script>
-
-</body>
-</html>
-
   <!-- 身体 -->
   <ellipse id="body" cx="100" cy="140" rx="60" ry="40" fill="#fff" stroke="#000" stroke-width="2"/>
   <!-- 脸 -->
